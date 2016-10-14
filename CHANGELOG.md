@@ -7,18 +7,24 @@ x.x.x Release notes (yyyy-MM-dd)
 
 ### Enhancements
 
-* None.
+* Add the ability to skip calling specific notification blocks when committing
+  a write transaction.
 
 ### Bugfixes
 
 * Fix a `BadVersion` exception caused by a race condition when delivering
   collection change notifications.
-
 * Fix an assertion failure when additional model classes are added and
   `deleteRealmIfMigrationNeeded` is enabled.
-
 * Fix a `BadTransactLog` exception when deleting an `RLMResults` in a synced
   Realm.
+* Deliver collection notifications when beginning a write transaction which
+  advances the read version of a Realm (previously only Realm-level
+  notifications were sent).
+* Fix some scenarios which would lead to inconsistent states when using
+  collection notifications.
+* Fix several race conditions in the notification functionality.
+* Don't send Realm change notifications when canceling a write transaction.
 
 2.0.2 Release notes (2016-10-05)
 =============================================================
