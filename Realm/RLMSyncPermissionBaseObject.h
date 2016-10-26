@@ -35,12 +35,29 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RLMSyncPermissionBaseObject : RLMObject
 
+/**
+ The unique ID string of a Permission Object.
+ */
 @property (readonly) NSString *id;
+
+/**
+ Creation date.
+ */
 @property (readonly) NSDate *createdAt;
+
+/**
+ Modification date.
+ */
 @property (readonly) NSDate *updatedAt;
 
-// these both fields are filled by the server:
-@property (readonly, nullable) NSNumber<RLMInt> *statusCode; // nil=not processed, 0=success, >0=error
+/**
+ The status code of the object that was processed by Realm Object Server.
+ */
+@property (readonly, nullable) NSNumber<RLMInt> *statusCode;
+
+/**
+ Error message.
+ */
 @property (readonly, nullable) NSString *statusMessage;
 
 @property (readonly) RLMSyncManagementObjectStatus status;
